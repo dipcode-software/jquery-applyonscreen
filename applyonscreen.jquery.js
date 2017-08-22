@@ -5,17 +5,6 @@
  *
  * To conditionaly run function on the screen limit defined by min and max;
  *
- * Usage:
- *      html:
- *		    <div class="selector"></div>
- *      javascript:
- *          $('.selector').applyOnScreen(function() {...}).range(0, 767);
-  *          							OR
- *          $('.selector').applyOnScreen(function() {...}).range(mobile, tablet);
- *          							OR
- *          $('.selector').applyOnScreen(function() {...}).max(767);
-  *          							OR
- *          $('.selector').applyOnScreen(function() {...}).max(mobile);
  *****************************************************************/
 
 
