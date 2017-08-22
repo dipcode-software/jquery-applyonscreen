@@ -19,6 +19,7 @@
         checkScreen = function(size_string) {
             return window.matchMedia(size_string).matches;
         },
+        
         validateValue = function(obj, size, opt) {
             var type = typeof(size);
 
