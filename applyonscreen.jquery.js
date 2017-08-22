@@ -19,11 +19,11 @@
         checkScreen = function(size_string) {
             return window.matchMedia(size_string).matches;
         },
-        validateValue = function(size, opt) {
+        validateValue = function(obj, size, opt) {
             var type = typeof(size);
 
             if ( 'min' === opt || 'max' === opt ) {
-                if ("string" === type) return this.options[opt][size];
+                if ("string" === type) return obj.options[opt][size];
                 if ("number" === type) return size;
             }
 
@@ -47,7 +47,7 @@
                 mobile: 767,
                 tablet: 991,
                 desktop: 1199,
-                large: Number.POSITIVE_INFINITY
+                large: 10000
             }
 
         };
@@ -61,7 +61,7 @@
         },
 
         min: function(size) {
-            var min = validateValue(size, 'min');
+            var min = validateValue(this, size, 'min');
 
             if (min && checkScreen("(min-width: " + min + "px)")) {
                 this.applyFn(this.element);
@@ -69,7 +69,7 @@
         },
 
         max: function(size) {
-            var max = validateValue(size, 'max');
+            var max = validateValue(this, size, 'max');
 
             if (max && checkScreen("(max-width: " + max + "px)")) {
                 this.applyFn(this.element);
@@ -77,8 +77,10 @@
         },
 
         range: function(minSize, maxSize) {
-            var min = validateValue(minSize, 'min'),
-                max = validateValue(maxSize, 'max');
+            var min = validateValue(this, minSize, 'min'),
+                max = validateValue(this, maxSize, 'max'),
+                
+                screenBool = false;
 
             if (min && max) {
                 screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + max + "px)");
