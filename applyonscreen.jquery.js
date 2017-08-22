@@ -15,11 +15,20 @@
     var pluginName = "applyOnScreen",
         dataKey = "plugin_" + pluginName,
 
-        validScreens = ['mobile', 'tablet', 'desktop', 'large'],
-
         size_string = '',
         checkScreen = function(size_string) {
             return window.matchMedia(size_string).matches;
+        },
+        
+        validateValue = function(obj, size, opt) {
+            var type = typeof(size);
+
+            if ( 'min' === opt || 'max' === opt ) {
+                if ("string" === type) return obj.options[opt][size];
+                if ("number" === type) return size;
+            }
+
+            return false;
         };
 
     var Plugin = function(element, applyFn, options) {
@@ -39,7 +48,7 @@
                 mobile: 767,
                 tablet: 991,
                 desktop: 1199,
-                large: 7680
+                large: 10000
             }
 
         };
@@ -53,11 +62,7 @@
         },
 
         min: function(size) {
-            var min = false,
-                type = typeof(size);
-
-            if ("string" === type) min = this.options.min[size];
-            if ("number" === type) min = size;
+            var min = validateValue(this, size, 'min');
 
             if (min && checkScreen("(min-width: " + min + "px)")) {
                 this.applyFn(this.element);
@@ -65,11 +70,7 @@
         },
 
         max: function(size) {
-            var max = false,
-                type = typeof(size);
-
-            if ("string" === type) max = this.options.max[size];
-            if ("number" === type) max = size;
+            var max = validateValue(this, size, 'max');
 
             if (max && checkScreen("(max-width: " + max + "px)")) {
                 this.applyFn(this.element);
@@ -77,20 +78,13 @@
         },
 
         range: function(minSize, maxSize) {
-            var min = false,
-                max = false,
-                screenBool = false,
-                minType = typeof(minSize),
-                maxType = typeof(maxSize);
-
-            if ("string" === minType) min = this.options.min[minSize];
-            if ("number" === minType) min = minSize;
-
-            if ("string" === maxType) max = this.options.min[maxSize];
-            if ("number" === maxType) max = maxSize;
+            var min = validateValue(this, minSize, 'min'),
+                max = validateValue(this, maxSize, 'max'),
+                
+                screenBool = false;
 
             if (min && max) {
-                screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + this.limits.max + "px)");
+                screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + max + "px)");
 
                 if (screenBool) this.applyFn(this.element);
             }
