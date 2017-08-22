@@ -36,7 +36,7 @@ options = {
  - JavaScript
 	 - Applied when the screen is between **0** and **767**
         ```javascript
-        $('.selector').applyOnScreen(function() {}).range(0, 767);
+        $('.selector').applyOnScreen(function() {...}).range(0, 767);
         ```
 	 - Applied when the screen is between **0** and **767**
         ```javascript
