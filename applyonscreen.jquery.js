@@ -30,6 +30,7 @@
 
         this.options = {
             min: {
+                mobile: 0,
                 tablet: 768,
                 desktop: 992,
                 large: 1200
@@ -37,7 +38,8 @@
             max: {
                 mobile: 767,
                 tablet: 991,
-                desktop: 1199
+                desktop: 1199,
+                large: 7680
             }
 
         };
@@ -57,8 +59,6 @@
             if ("string" === type) min = this.options.min[size];
             if ("number" === type) min = size;
 
-            console.log('min: (' + type + ' -> ' + size + ') ' + min);
-
             if (min && checkScreen("(min-width: " + min + "px)")) {
                 this.applyFn(this.element);
             }
@@ -70,8 +70,6 @@
 
             if ("string" === type) max = this.options.max[size];
             if ("number" === type) max = size;
-
-            console.log('max: (' + type + ' -> ' + size + ') ' + max);
 
             if (max && checkScreen("(max-width: " + max + "px)")) {
                 this.applyFn(this.element);
@@ -90,9 +88,6 @@
 
             if ("string" === maxType) max = this.options.min[maxSize];
             if ("number" === maxType) max = maxSize;
-
-            console.log('min: (' + minType + ' -> ' + minSize + ') ' + min);
-            console.log('max: (' + maxType + ' -> ' + maxSize + ') ' + max);
 
             if (min && max) {
                 screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + this.limits.max + "px)");
