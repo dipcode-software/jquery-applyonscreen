@@ -1,0 +1,16 @@
+{
+  "name": "applyonscreen",
+  "description": "jQuery plugin to apply function when screen size is reached",
+  "main": [
+    "applyonscreen.jquery.js",
+  ],
+  "keywords": [
+    "jquery",
+    "screen",
+    "breakpoints"
+  ],
+  "authors": [
+    "Dipcode <info@dipcode.com>"
+  ],
+  "license": "MIT"
+}
