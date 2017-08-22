@@ -52,6 +52,6 @@ options = {
 		```
 	 - To extend **options** variable
         ```javascript
-        $('.selector').applyOnScreen(function() {...}, {max: {xs: 480}).max('xs');
+        $('.selector').applyOnScreen(function() {...}, {max: {xs: 480}}).max('xs');
         ```
 	
