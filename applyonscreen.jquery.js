@@ -15,29 +15,32 @@
     var pluginName = "applyOnScreen",
         dataKey = "plugin_" + pluginName,
 
-        size_string = '',
-        checkScreen = function(size_string) {
+        checkScreen = function (size_string) {
             return window.matchMedia(size_string).matches;
         },
         
-        validateValue = function(obj, size, opt) {
+        validateValue = function (obj, size, opt) {
             var type = typeof(size);
 
             if ( 'min' === opt || 'max' === opt ) {
-                if ("string" === type) return obj.options[opt][size];
-                if ("number" === type) return size;
+                if ("string" === type) {
+                    return obj.options[opt][size];
+                }
+                else if ("number" === type) {
+                    return size;
+                }
             }
 
             return false;
         };
 
-    var Plugin = function(element, applyFn, options) {
+    var Plugin = function (element, applyFn, options) {
 
         this.element = element;
 
         this.applyFn = applyFn;
 
-        this.options = {
+        this.defaults = {
             min: {
                 mobile: 0,
                 tablet: 768,
@@ -57,11 +60,14 @@
     };
 
     Plugin.prototype = {
-        init: function(options) {
-            $.extend(this.options, options);
+
+        init: function (options) 
+        {
+            this.options = $.extend(this.defaults, options);
         },
 
-        min: function(size) {
+        min: function (size) 
+        {
             var min = validateValue(this, size, 'min');
 
             if (min && checkScreen("(min-width: " + min + "px)")) {
@@ -69,7 +75,8 @@
             }
         },
 
-        max: function(size) {
+        max: function (size) 
+        {
             var max = validateValue(this, size, 'max');
 
             if (max && checkScreen("(max-width: " + max + "px)")) {
@@ -77,16 +84,17 @@
             }
         },
 
-        range: function(minSize, maxSize) {
+        range: function (minSize, maxSize) 
+        {
             var min = validateValue(this, minSize, 'min'),
-                max = validateValue(this, maxSize, 'max'),
-                
-                screenBool = false;
+                max = validateValue(this, maxSize, 'max');
 
             if (min && max) {
-                screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + max + "px)");
+                var screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + max + "px)");
 
-                if (screenBool) this.applyFn(this.element);
+                if (screenBool) {
+                    this.applyFn(this.element);
+                }
             }
         }
     };
@@ -96,21 +104,7 @@
      * return plugin instance.
      */
     $.fn[pluginName] = function(applyFn, options) {
-
-        var plugin = this.data(dataKey);
-
-        // has plugin instantiated ?
-        if (plugin instanceof Plugin) {
-            // if have options arguments, call plugin.init() again
-            if (typeof options !== 'undefined') {
-                plugin.init(options);
-            }
-        } else {
-            plugin = new Plugin(this, applyFn, options);
-            this.data(dataKey, plugin);
-        }
-
-        return plugin;
+        return new Plugin(this, applyFn, options);
     };
 
 })(jQuery);
