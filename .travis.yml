@@ -8,7 +8,6 @@ node_js:
   - "node"
 
 before_script:
-  - npm install --save-dev jshint
-  - npm install -g gulp-cli
+  - npm install -g jshint gulp-cli
 
 script: gulp lint
