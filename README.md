@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dipcode-software/jquery-applyonscreen.svg?branch=master)](https://travis-ci.org/dipcode-software/jquery-applyonscreen)
+
 # Apply on Screen
 jQuery plugin to apply function when screen size is reached
 
