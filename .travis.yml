@@ -7,9 +7,10 @@ node_js:
   - "7"
   - "8"
   - "lts/*"
-  - "iojs"
   - "node"
 
 before_script:
   - npm install -g gulp
+
+script:
   - gulp lint
