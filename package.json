@@ -25,5 +25,8 @@
   "keywords": [
     "jquery-plugin",
     "ecosystem:jquery"
-  ]
+  ],
+  "scripts": {
+    "gulp": "gulp"
+  }
 }
