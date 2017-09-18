@@ -7,4 +7,4 @@ before_script:
   - npm install --save-dev gulp-cli gulp-jshint gulp-rename gulp-uglify
 
 script:
-  - gulp
+  - npm run gulp
