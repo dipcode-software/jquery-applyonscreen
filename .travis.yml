@@ -3,7 +3,7 @@ node_js:
   - "6.11.3"
 
 before_script:
-  - npm install -g gulp gulp-jshint gulp-rename gulp-uglify
+  - npm install -g gulp-cli gulp-jshint gulp-rename gulp-uglify
 
 script:
   - gulp
