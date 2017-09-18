@@ -2,12 +2,17 @@
 jQuery plugin to apply function when screen size is reached
 
 ## How to Install:
+* BOWER
 ```bash
 bower install applyonscreen
 ```
+* NPM:
+```bash
+npm i jquery-applyonscreen
+```
 
 ## Default Variables:
-	
+
 ```javascript
 options = {
   min: {
@@ -24,15 +29,15 @@ options = {
   }
 };
 ```
-    
+
 
 ## Usage:
  - HTML
- 
+
  	```html
     <div class="selector"></div>
     ```
-	 
+
  - JavaScript
 	 - Applied when the screen is between **0** and **767**
         ```javascript
@@ -54,4 +59,3 @@ options = {
         ```javascript
         $('.selector').applyOnScreen(function() {...}, {max: {xs: 480}}).max('xs');
         ```
-	
