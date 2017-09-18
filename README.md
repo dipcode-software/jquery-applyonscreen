@@ -33,7 +33,6 @@ options = {
 };
 ```
 
-
 ## Usage:
  - HTML
 
