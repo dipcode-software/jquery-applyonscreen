@@ -1,6 +1,6 @@
 {
   "name": "jquery-applyonscreen",
-  "version": "1.0.0",
+  "version": "0.1.0-dev1",
   "description": "jQuery plugin to apply function when screen size is reached",
   "main": "gulpfile.js",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "author": {
     "name": "Dipcode",
-    "email": "team@dipcode.com",
+    "email": "team@dipcode.com"
   },
   "license": "MIT",
   "bugs": {
@@ -20,6 +20,10 @@
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0",
-  }
+    "gulp-uglify": "^3.0.0"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ]
 }
