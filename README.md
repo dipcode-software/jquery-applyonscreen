@@ -8,7 +8,7 @@ bower install applyonscreen
 ```
 * NPM:
 ```bash
-npm install -g jquery-applyonscreen
+npm i jquery-applyonscreen
 ```
 
 ## Default Variables:
