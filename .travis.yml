@@ -1,10 +1,11 @@
 language: node_js
+
 node_js:
-  - "6.11.3"
-
+  - "0.10"
+  
 before_script:
+  - npm install -g bower
   - npm install -g gulp
-  - npm install --save-dev gulp gulp-jshint gulp-rename gulp-uglify
-
-script:
-  - npm run gulp
+  - npm install gulp-jshint gulp-rename gulp-uglify
+  - bower install
+  - gulp default
