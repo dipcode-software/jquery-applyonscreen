@@ -18,9 +18,11 @@
   "homepage": "https://github.com/dipcode-software/jquery-applyonscreen#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-cli": "^1.4.0",
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5"
   },
   "keywords": [
     "jquery-plugin",
@@ -28,5 +30,8 @@
   ],
   "scripts": {
     "gulp": "gulp"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
   }
 }
