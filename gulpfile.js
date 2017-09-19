@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint')
     rename = require('gulp-rename')
     uglify = require('gulp-uglify'),
+    qunit = require('gulp-qunit'),
     folder = {
 		src: 'src/',
 		dest: 'dist/'
@@ -29,11 +30,17 @@ gulp.task('docs-copy-src', function () {
 	.pipe(gulp.dest(folder.dest));
 });
 
+gulp.task('test', function() {
+    qunit('./test/*.html', {'page': {
+        viewportSize: { width: 1366, height: 800 }
+    }});
+});
+
 // Rerun the task when a file changes
 gulp.task('watch', function() {
     gulp.watch(folder.src + '*.js', ['default']);
 });
 
 gulp.task('default', function() {
-    gulp.start('lint', 'compress', 'docs-copy-src');
+    gulp.start('lint', 'test', 'compress', 'docs-copy-src');
 });
