@@ -56,3 +56,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.coverrun
+.editorconfig
+coverage.lcov
+package-lock.json
