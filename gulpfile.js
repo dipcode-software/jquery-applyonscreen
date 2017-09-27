@@ -32,7 +32,7 @@ gulp.task('docs-copy-src', function () {
 });
 
 gulp.task('test', function() {
-  qunit('./test/test_applyonscreen.html', {
+  qunit('./test/runner.html', {
     'timeout': 5,
     'verbose': true,
     'page': {
@@ -47,6 +47,10 @@ gulp.task('test', function() {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
     gulp.watch(folder.src + '*.js', ['default']);
+});
+
+gulp.task('travis', function() {
+    gulp.start('lint', 'test');
 });
 
 gulp.task('default', function() {
