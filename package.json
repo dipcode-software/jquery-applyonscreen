@@ -21,6 +21,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
+    "jsdom": "^11.2.0",
     "jshint": "^2.9.5",
     "node-qunit-phantomjs": "^1.5.0",
     "qunit-phantomjs-runner": "^2.3.0",
@@ -35,14 +36,10 @@
   ],
   "scripts": {
     "test": "gulp test",
-    "serve": "python -m SimpleHTTPServer 4444",
-    "browser_test": "google-chrome --window-size=800,600 --app='http://0.0.0.0:4444/test/test_applyonscreen.html?coverage'",
     "lint": "gulp lint",
     "cov": "qunit -c ./src/applyonscreen.jquery.js -t ./test/test-runner.js --timeout 1000 --cov"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
-    "jsdom": "^11.2.0",
-    "qunit-cli": "^0.2.0"
+    "jquery": "^3.2.1"
   }
 }
