@@ -60,6 +60,3 @@ typings/
 .editorconfig
 coverage.lcov
 package-lock.json
-
-lib/*
-!lib/*.min.*
