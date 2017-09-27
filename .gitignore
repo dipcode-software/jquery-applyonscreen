@@ -60,3 +60,5 @@ typings/
 .editorconfig
 coverage.lcov
 package-lock.json
+
+test/test-runner-cli.js
