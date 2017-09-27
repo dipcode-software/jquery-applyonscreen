@@ -2,7 +2,7 @@
   "name": "jquery-applyonscreen",
   "version": "0.1.0",
   "description": "jQuery plugin to apply function when screen size is reached",
-  "main": "gulpfile.js",
+  "main": "src/applyonscreen.jquery.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dipcode-software/jquery-applyonscreen.git"
@@ -18,18 +18,26 @@
   "homepage": "https://github.com/dipcode-software/jquery-applyonscreen#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-cli": "^1.4.0",
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
-    "jshint": "^2.9.5"
+    "jsdom": "^11.2.0",
+    "jshint": "^2.9.5",
+    "node-qunit-phantomjs": "^1.5.0",
+    "qunit-phantomjs-runner": "^2.3.0",
+    "qunitjs": "^2.4.0"
   },
   "keywords": [
     "jquery-plugin",
     "ecosystem:jquery"
   ],
+  "files": [
+    "src/applyonscreen.jquery.js"
+  ],
   "scripts": {
-    "gulp": "gulp"
+    "test": "gulp test",
+    "lint": "gulp lint",
+    "cov": "qunit -c ./src/applyonscreen.jquery.js -t ./test/test-runner.js --timeout 1000 --cov"
   },
   "dependencies": {
     "jquery": "^3.2.1"
