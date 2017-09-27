@@ -7,103 +7,98 @@
  *
  *****************************************************************/
 
-(function($) {
+ (function($) {
 
-    "use strict";
+  "use strict";
 
-    var pluginName = "applyOnScreen",
-        dataKey = "plugin_" + pluginName,
+  var pluginName = "applyOnScreen",
+  dataKey = "plugin_" + pluginName,
 
-        checkScreen = function (size_string) {
-            return window.matchMedia(size_string).matches;
-        },
-        
-        validateValue = function (obj, size, opt) {
-            var type = typeof(size);
+  checkScreen = function(size_string) {
+    return window.matchMedia(size_string).matches;
+  },
 
-            if ( 'min' === opt || 'max' === opt ) {
-                if ("string" === type) {
-                    return obj.options[opt][size];
-                }
-                else if ("number" === type) {
-                    return size;
-                }
-            }
+  validateValue = function(obj, size, opt) {
+    var type = typeof(size);
 
-            return false;
-        };
+    if ('min' === opt || 'max' === opt) {
+      if ("string" === type) {
+        return obj.options[opt][size];
+      } else if ("number" === type) {
+        return size;
+      }
+    }
 
-    var Plugin = function (element, applyFn, options) {
+    return false;
+  };
 
-        this.element = element;
+  var Plugin = function(element, applyFn, options) {
 
-        this.applyFn = applyFn;
+    this.element = element;
 
-        this.defaults = {
-            min: {
-                mobile: 0,
-                tablet: 768,
-                desktop: 992,
-                large: 1200
-            },
-            max: {
-                mobile: 767,
-                tablet: 991,
-                desktop: 1199,
-                large: 10000
-            }
+    this.applyFn = applyFn;
 
-        };
+    this.defaults = {
+      min: {
+        mobile: 0,
+        tablet: 768,
+        desktop: 992,
+        large: 1200
+      },
+      max: {
+        mobile: 767,
+        tablet: 991,
+        desktop: 1199,
+        large: 10000
+      }
 
-        this.init(options);
     };
 
-    Plugin.prototype = {
+    this.init(options);
+  };
 
-        init: function (options) 
-        {
-            this.options = $.extend(this.defaults, options);
-        },
+  Plugin.prototype = {
 
-        min: function (size) 
-        {
-            var min = validateValue(this, size, 'min');
+    init: function(options) {
+      this.options = $.extend(this.defaults, options);
+    },
 
-            if (min && checkScreen("(min-width: " + min + "px)")) {
-                this.applyFn(this.element);
-            }
-        },
+    min: function(size) {
+      var min = validateValue(this, size, 'min');
 
-        max: function (size) 
-        {
-            var max = validateValue(this, size, 'max');
+      if (min && checkScreen("(min-width: " + min + "px)")) {
+        this.applyFn(this.element);
+      }
+    },
 
-            if (max && checkScreen("(max-width: " + max + "px)")) {
-                this.applyFn(this.element);
-            }
-        },
+    max: function(size) {
+      var max = validateValue(this, size, 'max');
 
-        range: function (minSize, maxSize) 
-        {
-            var min = validateValue(this, minSize, 'min'),
-                max = validateValue(this, maxSize, 'max');
+      if (max && checkScreen("(max-width: " + max + "px)")) {
+        this.applyFn(this.element);
+      }
+    },
 
-            if (min && max) {
-                var screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + max + "px)");
+    range: function(minSize, maxSize) {
+      var min = validateValue(this, minSize, 'min'),
+      max = validateValue(this, maxSize, 'max');
 
-                if (screenBool) {
-                    this.applyFn(this.element);
-                }
-            }
+      if (min && max) {
+        var screenBool = checkScreen("(min-width: " + min + "px) and (max-width: " + max + "px)");
+
+        if (screenBool) {
+          this.applyFn(this.element);
         }
-    };
+      }
+    }
+  };
 
-    /*
-     * Plugin wrapper, preventing against multiple instantiations and
-     * return plugin instance.
-     */
-    $.fn[pluginName] = function(applyFn, options) {
-        return new Plugin(this, applyFn, options);
-    };
+  /*
+   * Plugin wrapper, preventing against multiple instantiations and
+   * return plugin instance.
+   */
+  $.fn[pluginName] = function(applyFn, options) {
+    return new Plugin(this, applyFn, options);
+  };
 
 })(jQuery);
